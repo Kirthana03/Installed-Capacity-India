@@ -254,8 +254,11 @@
 
     const zoomThreshold = 4;
 
-    var uArray = JSON.parse(localStorage.getItem('sArray'));
-    console.log(uArray); 
+    var rawData = localStorage.getItem('sArray');
+    console.log('Raw Data:', rawData);
+    
+    var uArray = JSON.parse(rawData);
+    console.log('Parsed Array:', uArray);
 
     var geojson;
     
