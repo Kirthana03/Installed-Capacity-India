@@ -257,7 +257,10 @@
     var uArray = JSON.parse(localStorage.getItem('sArray'));
     console.log(uArray); 
 
-    var geojson = {
+    var geojson;
+    
+    if (uArray && Array.isArray(uArray)) {
+        geojson = {
             type: 'FeatureCollection',
             features: uArray.map(function(item) {
                 return {
@@ -270,14 +273,16 @@
                         title: item.state,
                         Coal: item.Coal,
                         Total: item.Total,
-                        Hydro: item.Hydro, 
+                        Hydro: item.Hydro,
                         Renewable: item.Renewable,
                     }
                 };
             })
         };
+    } else {
+        console.error("uArray is null or not an array.");
+    }
 
-    console.log(geojson); 
 
     const filterGroup = document.getElementById('filter-group'); 
     const showCoalCheckbox = document.getElementById('show-coal');
