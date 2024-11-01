@@ -1,0 +1,23 @@
+name: Deploy Mapbox Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run deployment script
+        env:
+          MAPBOX_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN }}
+        run: |
+          # Use the token in your deployment script
+          # Here, you could inject it into your HTML/JavaScript
+          echo "Mapbox token is ${MAPBOX_TOKEN}"
+          # Alternatively, insert the token into the code at runtime, or use it in API requests
+
